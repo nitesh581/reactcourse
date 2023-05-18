@@ -9,22 +9,27 @@ export default function TextForm(props) {
     const handleUpperCaseClick = () => {
         let newText = text.toUpperCase()
         setText(newText)
+        props.showAlert('Uppercase done', 'success')
     }
     const handleLowerCaseClick = () => {
         let newText = text.toLowerCase()
         setText(newText)
+        props.showAlert('Lowercase done', 'success')
     }
     const handleClearTextClick = () => {
         let newText = ''
         setText(newText)
+        props.showAlert('Text Cleared', 'success')
     }
     const handleCopyTextClick = () => {
         document.getElementById('myText').select()
         navigator.clipboard.writeText(text)
+        props.showAlert('Text Copied', 'success')
     }
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/)
         setText(newText.join(" "))
+        props.showAlert('Extra spaces removed', 'success')
     }
     
     return (
@@ -57,8 +62,7 @@ export default function TextForm(props) {
                 <h2>Preview</h2>
                 <p>{text}</p>
             </div>
-        </>
-        
+        </>        
     )
 }
 
