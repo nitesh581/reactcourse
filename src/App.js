@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar'
 import TextForm from './components/TextForm'
 import PropTypes from 'prop-types'
-import Alert from './components/Alert';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from "react-router-dom";
+
 
 function App() {
 
@@ -33,14 +39,18 @@ function App() {
     }
   }
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route exact path="/" element={<Navbar title="TextUtils" alert={alert} mode={mode} toggleMode={toggleMode} />}>
+        <Route exact path='/' element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} />
+        <Route exact path='/about' element={<About />} />
+      </Route>
+    )
+  );
+
   return (
-    <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert}/>
-      <div className='container my-3'>
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
-        {/* <About/> */}
-      </div>
+    <>      
+      <RouterProvider router={router} />
     </>
   );
 }
