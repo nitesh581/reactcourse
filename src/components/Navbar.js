@@ -21,14 +21,18 @@ export default function Navbar(props) {
                                 <Link className="nav-link" to="/about">{props.aboutText}</Link>
                             </li>
                         </ul>
-                        {/* <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form> */}
-                        <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light': 'dark'}`}>
+                        <div className='d-flex'>
+                            <div onClick={() => {props.toggleMode('primary')}} className="bg-primary mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                            <div onClick={() => {props.toggleMode('danger')}} className="bg-danger mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                            <div onClick={() => {props.toggleMode('warning')}} className="bg-warning mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                            <div onClick={() => {props.toggleMode('success')}} className="bg-success mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                            <div onClick={() => {props.toggleMode('light')}} className="bg-light mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                            <div onClick={() => {props.toggleMode('dark')}} className="bg-dark mx-2 rounded border" style={{width: '30px', height: '30px'}}></div>
+                        </div>
+                        {/* <div className={`form-check form-switch text-${props.mode === 'dark' ? 'light': 'dark'}`}>
                             <input onChange={props.toggleMode} className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>
