@@ -42,8 +42,8 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route exact path="/" element={<Navbar title="TextUtils" alert={alert} mode={mode} toggleMode={toggleMode} />}>
-        <Route exact path='/' element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} />
-        <Route exact path='/about' element={<About />} />
+        <Route exact path='/' element={<TextForm showAlert={showAlert} heading="TextUtils - Word Counter, Character Counter, Remove Extra Spaces" mode={mode} />} />
+        <Route exact path='/about' element={<About mode={mode} />} />
       </Route>
     )
   );
