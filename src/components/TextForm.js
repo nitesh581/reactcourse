@@ -22,9 +22,9 @@ export default function TextForm(props) {
         props.showAlert('Text Cleared', 'success')
     }
     const handleCopyTextClick = () => {
-        document.getElementById('myText').select()
+        // document.getElementById('myText').select()
         navigator.clipboard.writeText(text)
-        document.getSelection().removeAllRanges();
+        // document.getSelection().removeAllRanges();
         props.showAlert('Text Copied', 'success')
     }
     const handleExtraSpaces = () => {
@@ -58,7 +58,7 @@ export default function TextForm(props) {
             </div>
             <div className="container my-3" style={{color: props.mode === 'light' ? 'black' : 'white'}}>
                 <h1>Your text summay</h1>
-                <p>{text.split(" ").filter((element) => {return element.length !== 0}).length} words and {text.length} characters</p>
+                <p>{text.split(/\s+/).filter((element) => {return element.length !== 0}).length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").filter((element) => {return element.length !== 0}).length} minutes read</p>
                 <h2>Preview</h2>
                 <p>{text.length ? text : 'Nothing to Preview'}</p>
